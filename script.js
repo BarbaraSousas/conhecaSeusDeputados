@@ -1,5 +1,5 @@
 async function makeRequest() {
-    const url = "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=100";
+    const url = "https://dadosabertos.camara.leg.br/api/v2/deputados?itens=15";
     const request = await getDeputados('GET', url);
 
     console.log(request)
@@ -7,26 +7,34 @@ async function makeRequest() {
 }
 
 function setDeputados(request) {
-    var html = "<tr></tr>";
-
-    html+="<tr>";
-    html+="<td>Deputado</td>";
-    html+="<td>email</td>";
-    html+="<td>Partido</td>";
-    html+="<td>Uf</td>";
-    html+="<td>foto</td>";
-    html+="</tr>";
+    var html = "<div></div>";
 
     request.forEach((v, i) => {
-        html+="<tr>";
-        html+=`<td>${v.nome}</td>`;
-        html+=`<td>${v.email}</td>`;
-        html+=`<td>${v.siglaPartido}</td>`;
-        html+=`<td>${v.siglaUf}</td>`;
-        html+=`<td><img src="${v.urlFoto}"/></td>`;
-        html+="</tr>";
+        html+="<div class='box-deputados'>";
+        html+= `<div class='img' >`
+        html+=`<img src="${v.urlFoto}"/>`;
+        html+= `</div>`
+        html+= `<div>`
+        html+= `<div class='deputado-nome'>`
+        html+=`<span>${v.nome}</span>`;
+        html+= `</div>`
+        html+= `<div class='deputado-info'>`
+        html+=`<span>${v.email}</span>`;
+        html+= `</div>`
+        html+= `<div>`
+        html+= `</div>`
+        html+= `<div>`
+        html+= `<div class='deputado-info'>`
+        html+=`<span>Partido: ${v.siglaPartido}</span>`;
+        html+= `</div>`
+        html+= `<div class='deputado-info'>`
+        html+=`<span>UF: ${v.siglaUf}</span>`;
+        html+= `</div>`
+        html+= `</div>`
+        html+= `</div>`
+        html+="</div>";
     });
-    document.getElementById("table").innerHTML = html;
+    document.getElementById("content").innerHTML = html;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
