@@ -49,13 +49,21 @@ section {
     padding: 0 10em;
 }
 
+.welcome {
+    font-size: 2rem;
+    line-height: 41px;
+    margin-bottom: 32px;
+    color: rgba(0,0,0,0.45);
+    padding: 2em 0;
+}
+
 #content {
     width: 100%;
 }
 
 .box-deputados {
     margin-bottom: 16px;
-    background: #f9f6f6;
+    background: rgba(31, 164, 187, 0.08);
     padding: 14px;
     display: flex;
 }
